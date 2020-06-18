@@ -4,6 +4,6 @@ itsdangerous==1.1.0
 Jinja2==2.10
 MarkupSafe==1.1.1
 Werkzeug==0.14.1
-sklearn-crfsuite==0.3.6
+sckit-learn>=0.18
 nltk==3.4
 pandas==0.24.2
