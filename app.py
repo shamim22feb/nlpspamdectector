@@ -26,4 +26,7 @@ def predict():
         vect = cv.transform(data).toarray()
         predict = model.predict(vect)
     return render_template('result.html',prediction = predict)
+
+if __name__=='__main__':
+    app.run()
     
