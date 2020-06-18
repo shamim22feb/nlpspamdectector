@@ -1,32 +1,24 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jun 17 23:23:55 2020
-
-@author: SAM
-"""
-
-import nltk
+from flask import Flask, render_template, request
 import pickle
-from flask import render_template,Flask,request,url_for
 
-model = pickle.load(open('model_nlp.pkl','rb'))
+# Load the Multinomial Naive Bayes model and CountVectorizer object from disk
+filename = 'model_nlp.pkl'
+classifier = pickle.load(open(filename, 'rb'))
 cv = pickle.load(open('transform.pkl','rb'))
-app= Flask(__name__)
+app = Flask(__name__)
 
 @app.route('/')
 def home():
-    render_template('home.html')
-
+	return render_template('home.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
-    if request.method == 'POST' :
-        message = request.form['message']
-        data=[message]
-        vect = cv.transform(data).toarray()
-        predict = model.predict(vect)
-    return render_template('result.html',prediction = predict)
+    if request.method == 'POST':
+    	message = request.form['message']
+    	data = [message]
+    	vect = cv.transform(data).toarray()
+    	my_prediction = classifier.predict(vect)
+    	return render_template('result.html', prediction=my_prediction)
 
-if __name__=='__main__':
-    app.run()
-    
+if __name__ == '__main__':
+	app.run()
