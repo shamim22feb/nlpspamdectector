@@ -1,0 +1,23 @@
+<html>
+<head>
+
+ML model
+</head>
+<body>
+<header>
+<div>
+<h2>Spam Dectector for Email Message</h2>
+</div>
+</header>
+
+<div>
+<form action="{{url_for('predict')}}" method="POST">
+<p>Enter your Message Here:</p>
+<textarea name='message' rows=6 cols=60></textarea>
+</br>e
+<input type=submit value="predict"/>
+</form>
+</div>
+
+</body>
+</html>

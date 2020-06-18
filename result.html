@@ -1,0 +1,20 @@
+<html>
+<body>
+
+<header>
+
+<h2> Results for comments</h2>
+</header>
+
+
+<div>
+{% if prediction==1 %}
+    <h1>Prediction: <span class='danger'>Gotcha! This is a SPAM message.</span></h1>
+	
+{% elif prediction==0 %}
+	<h1>Prediction: <span class='safe'>Great! This is NOT a spam message.</span></h1>
+{% endif %}
+
+</div>
+</body>
+</html>
